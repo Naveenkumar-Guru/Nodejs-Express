@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "first_name": "Zaria",
+    "email": "zeastwood0@example.com",
+    "gender": "Female"
+  },
+  {
+    "id": 2,
+    "first_name": "Guendolen",
+    "email": "gredish1@google.ca",
+    "gender": "Female"
+  },
+  {
+    "id": 3,
+    "first_name": "Jerrine",
+    "email": "jkiernan2@nasa.gov",
+    "gender": "Female"
+  },
+  {
+    "id": 4,
+    "first_name": "Torrance",
+    "email": "tbirdsey3@parallels.com",
+    "gender": "Male"
+  },
+  {
+    "id": 5,
+    "first_name": "Stanislas",
+    "email": "sspiers4@addtoany.com",
+    "gender": "Male"
+  },
+  {
+    "id": 6,
+    "first_name": "Jerrilyn",
+    "email": "jinde5@washington.edu",
+    "gender": "Female"
+  },
+  {
+    "id": 7,
+    "first_name": "Kristy",
+    "email": "kcarncross6@squidoo.com",
+    "gender": "Non-binary"
+  },
+  {
+    "id": 8,
+    "first_name": "Shane",
+    "email": "sclemintoni7@uiuc.edu",
+    "gender": "Male"
+  },
+  {
+    "id": 9,
+    "first_name": "Goran",
+    "email": "gcakebread8@time.com",
+    "gender": "Male"
+  },
+  {
+    "id": 10,
+    "first_name": "Ediva",
+    "email": "eegel9@prlog.org",
+    "gender": "Female"
+  },
+  {
+    "id": 11,
+    "first_name": "Fremont",
+    "email": "fmilbournea@webeden.co.uk",
+    "gender": "Male"
+  }
+]
