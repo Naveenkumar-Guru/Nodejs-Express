@@ -1,0 +1,47 @@
+npm install express morgan chalk dotenv
+            (OR)
+npm init -y
+npm i express
+npm i morgan
+npm i chalk
+npm i dotenv
+
+API Info
+________
+app Root
+---------
+usage:Application root request
+API URL:http://127.0.0.1:8080/
+Method Type:GET
+
+create
+------
+Usage: create new employee
+Rest API URL: http://127.0.0.1:8080/emp/create
+Method Type:POST
+required Fields:eid,ename,esal,loc
+Access Type:Public
+
+Read
+------
+Usage: fetch all employees
+Rest API URL: http://127.0.0.1:8080/emp/read
+Method Type:GET
+required Fields:None
+Access Type:Public
+
+Update
+------
+Usage: Update Employee by eid
+Rest API URL: http://127.0.0.1:8080/emp/update/101
+Method Type:PUT
+required Fields:eid,ename,esal,loc
+Access Type:Public
+
+Delete
+------
+Usage: Delete employee by eid
+Rest API URL: http://127.0.0.1:8080/emp/create
+Method Type:DELETE
+required Fields:None
+Access Type:Public
