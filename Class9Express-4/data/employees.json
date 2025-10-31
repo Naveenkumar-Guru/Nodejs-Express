@@ -2,7 +2,13 @@
   {
     "eid": 104,
     "ename": "naveen",
-    "esal": 5000,
+    "esal": 100000,
+    "loc": "hyd"
+  },
+  {
+    "eid": 101,
+    "ename": "naveen",
+    "esal": 100000,
     "loc": "hyd"
   }
 ]
