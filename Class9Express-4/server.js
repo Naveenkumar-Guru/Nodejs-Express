@@ -2,12 +2,16 @@ import express from "express";
 import morgan from "morgan";
 import chalk from "chalk";
 import empRouter from "./routes/empRouter.js";
+import dotenv from "dotenv";
 
-let port = 8080;
-let host = "127.0.0.1";
+// let port = 8080;
+// let host = "127.0.0.1";
 let app = express();
 
-//Morgan- HTTP Logger Middleware
+dotenv.config({ path: "./config/dev.env" });
+let port=process.env.port;
+let host=process.env.host;
+
 app.use(morgan("dev"));
 app.use(express.json());
 
