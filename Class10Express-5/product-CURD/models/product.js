@@ -21,5 +21,5 @@ let ProductSchema = new mongoose.Schema({
     type: String,
   },
 });
-let Product = mongoose.model("products", ProductSchema);
-export default Product;
+let productModel = mongoose.model("products", ProductSchema); //products is a colleations names
+export default productModel;
