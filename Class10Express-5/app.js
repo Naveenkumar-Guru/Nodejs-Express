@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import chalk from "chalk";
+import productRouter from "./routers/productRouter.js";
 
 const app = express();
 
@@ -18,6 +19,19 @@ app.use(express.json());
 app.get("/", (req, resp) => {
   return resp.status(200).json({ msg: "Application Root request" });
 });
+
+app.use("/product", productRouter);
+
+//mongo db connection
+mongoose
+  .connect(MONGO_DB_URL, {})
+  .then((req) => {
+    console.log("MongoDB Connection Successfully Done");
+  })
+  .catch((error) => {
+    console.log(error);
+    // process.exit(1);
+  });
 
 app.listen(port, host, (error) => {
   if (error) throw error;
