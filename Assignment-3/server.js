@@ -4,6 +4,8 @@ import cors from "cors";
 import morgan from "morgan";
 import chalk from "chalk";
 import connectDB from "./config/db.js"; // Import MongoDB connection
+// import authRouter from "./routers/authRouters.js";
+// import otpRouter from "./routers/otpRouters.js";
 
 // Create Express app
 const app = express();
