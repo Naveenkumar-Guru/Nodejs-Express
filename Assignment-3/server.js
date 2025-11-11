@@ -32,5 +32,5 @@ app.get("/", (req, res) => {
 // Start the server
 app.listen(port, host, (error) => {
   if (error) throw error;
-  console.log(chalk.green(`✅ Server running at http://${host}:${port}`));
+  console.log(chalk.green(`Server running at http://${host}:${port}`));
 });

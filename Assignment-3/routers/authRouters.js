@@ -23,10 +23,9 @@ router.post("/register", async (req, resp) => {
 });
 
 router.post("/login", async (req, resp) => {
-  // ✅ removed comma after async
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email }); // ✅ fixed "await.user" to "await User"
+    const user = await User.findOne({ email }); // fixed "await.user" to "await User"
     if (!user) {
       return resp.status(404).json({ msg: "User not found" });
     }
@@ -38,7 +37,7 @@ router.post("/login", async (req, resp) => {
 
     const token = jwt.sign(
       { id: user._id },
-      process.env.JWT_SECRET, // ✅ fixed "password.env.jwt_SECRET" to correct syntax
+      process.env.JWT_SECRET, // fixed "password.env.jwt_SECRET" to correct syntax
       { expiresIn: "1h" } // optional but good practice
     );
 
