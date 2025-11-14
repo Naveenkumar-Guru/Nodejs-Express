@@ -5,24 +5,19 @@ import nodemailer from "nodemailer";
 
 const router = express.Router();
 
-//SEND OTP
-
-router.post("/send", async (req, resp) => {
+// SEND OTP
+router.post("/send", async (req, res) => {
   try {
     const { email } = req.body;
 
-    // Generate 6-digit OTP
+    // Generate OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-    // Save OTP with 5-min expiry
+    // Save OTP
     const otpEntry = new OTP({
       email,
       code: otp,
       expiresAt: new Date(Date.now() + 5 * 60 * 1000),
-      //       1 minute = 60 seconds 1 second = 1000 millisecondsSo,
-      // 5 * 60 * 1000 = 300000 milliseconds
-      // Adds 5 minutes to the current time.
-      // So if the current time is 12:00:00, this becomes the timestamp for 12:05:00.
     });
     await otpEntry.save();
 
@@ -33,41 +28,41 @@ router.post("/send", async (req, resp) => {
         pass: process.env.EMAIL_PASS,
       },
     });
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "your OTP code",
-      text: `Your OTP code is ${otp}`, // It will expire in 5 minutes.
+      subject: "Your OTP Code",
+      text: `Your OTP code is ${otp}. It will expire in 5 minutes.`,
     });
-    resp.json({ msg: "OTP send to email" });
+
+    res.json({ msg: "OTP sent to email" });
   } catch (error) {
-    return resp.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
 // VERIFY OTP
-router.post("/verify", async (req, resp) => {
+router.post("/verify", async (req, res) => {
   try {
     const { email, code } = req.body;
 
-    // Check OTP
     const otpData = await OTP.findOne({ email, code });
     if (!otpData) {
-      return resp.status(400).json({ msg: "invalid OTP" });
+      return res.status(400).json({ msg: "Invalid OTP" });
     }
 
-    // Check expiry
     if (otpData.expiresAt < new Date()) {
-      return resp.status(400).json({ msg: "OTP expired" });
+      await OTP.deleteMany({ email });
+      return res.status(400).json({ msg: "OTP expired" });
     }
 
-    // Mark user as verified
     await User.updateOne({ email }, { verified: true });
     await OTP.deleteMany({ email });
-    
-    resp.json({ msg: "OTP verified successfully" });
+
+    res.json({ msg: "OTP verified successfully" });
   } catch (error) {
-    resp.status(500).json({ msg: error.message });
+    res.status(500).json({ msg: error.message });
   }
 });
 
